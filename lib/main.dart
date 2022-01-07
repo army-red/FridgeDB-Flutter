@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'mysql.dart';
 import 'history.dart';
 import 'dart:async';
+import 'current.dart';
+import 'temperature.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,10 +26,7 @@ class _MyAppState extends State<MyApp> {
       'key': '歷史記錄',
     },
     {
-      'key': '大致位置',
-    },
-    {
-      'key': '其他',
+      'key': '溫度',
     },
     {
       'key': '設置',
@@ -39,12 +37,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     pages = [
-      Home(Colors.black, '1'),
+      Current(),
       HistoryRecord(),
-      Home(Colors.teal, '3'),
-      Home(Colors.amber, '4'),
-      Home(Colors.amber, '4')
+      Temp(),
+      Home(Colors.black26, '3')
     ];
     return MaterialApp(
       theme: ThemeData.dark(),
@@ -63,16 +61,12 @@ class _MyAppState extends State<MyApp> {
                   title: Text(tabs[1]['key'])),
               BottomNavigationBarItem(
                   icon:
-                      const Icon(Icons.archive),
+                      const Icon(Icons.thermostat_outlined),
                   title: Text(tabs[2]['key'])),
               BottomNavigationBarItem(
                   icon:
-                      const Icon(Icons.menu_outlined),
-                  title: Text(tabs[3]['key'])),
-              BottomNavigationBarItem(
-                  icon:
                       const Icon(Icons.settings),
-                  title: Text(tabs[4]['key'])),
+                  title: Text(tabs[3]['key'])),
             ],
             type: BottomNavigationBarType.fixed,
             iconSize: 24,

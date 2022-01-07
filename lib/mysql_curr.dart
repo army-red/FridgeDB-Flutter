@@ -3,10 +3,11 @@ import 'package:mysql1/mysql1.dart';
 import 'dart:io';
 import 'dart:convert';
 
-List data = [];
+List dataCurr = [];
 // var data;
-sql() async {
-  // data = [];
+sqlCurr() async {
+
+  // dataCurr = [];
   var s = ConnectionSettings(
     user: "admin",
     password: "adminadmin",
@@ -21,24 +22,21 @@ sql() async {
   var conn = await MySqlConnection.connect(s);
   print("Opened connection!");
 
-  var results = await conn.query('select * from things;');
+  var results = await conn.query('select * from things_now;');
 
   print(results.toList()[0]);
 
   for (var row in results.toList()){
     try{
-      // DateTime time = DateTime.parse(row['time_stamp']);
       var tmp = [row['name'],row['probability'],row['box_points'].toString().substring(1,row['box_points'].toString().length - 1).split(','),row['num_stamp'],row['time_stamp']];
-      data.add(tmp);
+      dataCurr.add(tmp);
       print(tmp);
     } catch (e){
       print('error $e');
     }
   }
-  print(data.length);
-  // data.removeAt(0);
-
-  // data.sort((a, b) => (b['time_stamp']).isAfter(a['time_stamp']));
+  print(dataCurr.length);
+  // dataCurr.removeAt(0);
   conn.close();
 
 }

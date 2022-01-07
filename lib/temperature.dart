@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
 
-class HistoryRecord extends StatefulWidget {
-  const HistoryRecord({Key? key}) : super(key: key);
+class Temp extends StatefulWidget {
+  const Temp({Key? key}) : super(key: key);
 
   @override
-  State<HistoryRecord> createState() => _HistoryRecordState();
+  State<Temp> createState() => _TempState();
 }
 
 List data = [];
@@ -26,11 +26,12 @@ sql() async {
   var conn = await MySqlConnection.connect(s);
   print("Opened connection!");
 
-  var results = await conn.query('select * from things;');
+  var results = await conn.query('select * from temp;');
 
   for (var row in results.toList()){
     try{
-      var tmp = [row['name'],row['probability'],row['time_stamp'],row['inout']];
+      // DateTime time = DateTime.parse(row['time_stamp']);
+      var tmp = [row['temp_now'],row['time_stamp'],row['error']];
       tmp_data.add(tmp);
       // print(tmp);
     } catch (e){
@@ -42,26 +43,22 @@ sql() async {
   conn.close();
 }
 
-class _HistoryRecordState extends State<HistoryRecord> {
+class _TempState extends State<Temp> {
   Map icon2name = {
     "cow":const Icon(IconData(0xe64d, fontFamily: 'Foods'), size: 20,),
     "sheep":const Icon(IconData(0xe64a, fontFamily: 'Foods'), size: 20,),
     "person":const Icon(Icons.accessibility),
     "dog":const Icon(IconData(0xe637, fontFamily: 'Foods'), size: 20,),
     "bottle":const Icon(IconData(0xe627, fontFamily: 'Foods'), size: 20,),
-
   };
 
-
   List file = data;
-
   @override
   Widget build(BuildContext context) {
-    sql();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("History Food"),
+        title: const Text("Temperature"),
         centerTitle: true,
       ),
       body: Container(
@@ -79,7 +76,7 @@ class _HistoryRecordState extends State<HistoryRecord> {
           print('file' + file.toString());
         },
         child: const Icon(
-          Icons.refresh
+            Icons.refresh
         ),
 
 
@@ -87,18 +84,24 @@ class _HistoryRecordState extends State<HistoryRecord> {
     );
 
   }
-
   Widget buildList(file ) {
     return Container(
-      color: Colors.teal,
+      color: Colors.black87,
       child: ListView.builder(
         itemCount: file.length,
         itemBuilder: (BuildContext context, int index) {
-          var subtt = "Prob: " + file[index][1].toString().substring(0,4) + " \nTime: " + file[index][2].toString();
+          var subtt = "Time: " + file[index][1].toString();
           return ListTile(
-
-            leading: icon2name[file[index][0]] ?? const Icon(Icons.help),
-            title: Text(file[index][0] + "    " + (file[index][3]==1 ? 'In' : 'Out')),
+            // tileColor: file[index][0] > 0 ? Colors.red : Colors.white,
+            leading: file[index][0] > 0 ? const Icon(Icons.whatshot,size: 25,) : const Icon(Icons.icecream,size: 25),
+            title: Text(
+                file[index][0].toString() + '℃',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: file[index][0] > 0 ? Colors.red : Colors.blueAccent,
+              ),
+            ),
             subtitle: Text(subtt),
           );
         },
