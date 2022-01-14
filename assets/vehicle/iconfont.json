@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2076412",
+      "name": "推荐汽车",
+      "font_class": "tuijianqiche",
+      "unicode": "e8cd",
+      "unicode_decimal": 59597
+    },
+    {
+      "icon_id": "5387703",
+      "name": "货车",
+      "font_class": "huoche",
+      "unicode": "eb36",
+      "unicode_decimal": 60214
+    },
+    {
+      "icon_id": "5961393",
+      "name": "汽车",
+      "font_class": "qiche",
+      "unicode": "ec6d",
+      "unicode_decimal": 60525
+    },
+    {
+      "icon_id": "9399629",
+      "name": "摩托车",
+      "font_class": "icon-test",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
+    }
+  ]
+}

@@ -50,6 +50,10 @@ class _HistoryRecordState extends State<HistoryRecord> {
     "dog":const Icon(IconData(0xe637, fontFamily: 'Foods'), size: 20,),
     "bottle":const Icon(IconData(0xe627, fontFamily: 'Foods'), size: 20,),
 
+    "motorcycle":const Icon(IconData(0xe6f6, fontFamily: 'Vehicle'), size: 20,),
+    "car":const Icon(IconData(0xec6d, fontFamily: 'Vehicle'), size: 20,),
+    "bus":const Icon(IconData(0xe8cd, fontFamily: 'Vehicle'), size: 20,),
+    "truck":const Icon(IconData(0xeb36, fontFamily: 'Vehicle'), size: 20,),
   };
 
 
@@ -61,7 +65,7 @@ class _HistoryRecordState extends State<HistoryRecord> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("History Food"),
+        title: const Text("History"),
         centerTitle: true,
       ),
       body: Container(

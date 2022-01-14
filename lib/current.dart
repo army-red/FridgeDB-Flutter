@@ -50,6 +50,11 @@ class _CurrentState extends State<Current> {
     "person":const Icon(Icons.accessibility),
     "dog":const Icon(IconData(0xe637, fontFamily: 'Foods'), size: 20,),
     "bottle":const Icon(IconData(0xe627, fontFamily: 'Foods'), size: 20,),
+
+    "motorcycle":const Icon(IconData(0xe6f6, fontFamily: 'Vehicle'), size: 20,),
+    "car":const Icon(IconData(0xec6d, fontFamily: 'Vehicle'), size: 20,),
+    "bus":const Icon(IconData(0xe8cd, fontFamily: 'Vehicle'), size: 20,),
+    "truck":const Icon(IconData(0xeb36, fontFamily: 'Vehicle'), size: 20,),
   };
 
   List file = data;
@@ -58,7 +63,7 @@ class _CurrentState extends State<Current> {
 
       return Scaffold(
         appBar: AppBar(
-          title: const Text("Current Food"),
+          title: const Text("Current"),
           centerTitle: true,
         ),
         body: Container(

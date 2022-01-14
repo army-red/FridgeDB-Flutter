@@ -84,6 +84,11 @@ flutter:
     - family: Foods
       fonts:
         - asset: assets/icons/food-etc.ttf
+    - family: Vehicle
+      fonts:
+        - asset: assets/vehicle/vehicle.ttf
+
+
   # fonts:
   #   - family: Schyler
   #     fonts:
